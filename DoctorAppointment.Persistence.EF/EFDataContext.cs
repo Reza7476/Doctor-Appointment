@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DoctorAppointment.Entities.Doctors;
+using Microsoft.EntityFrameworkCore;
 
 namespace DoctorAppointment.Persistence.EF;
 public class EFDataContext : DbContext
@@ -9,9 +10,8 @@ public class EFDataContext : DbContext
     { }
     public EFDataContext( DbContextOptions options):base(options)
     { }
-        
-   
 
+    public DbSet<Doctor> Doctors { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
