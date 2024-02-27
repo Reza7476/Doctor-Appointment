@@ -1,5 +1,7 @@
 ﻿using DoctorAppointment.Entities.Doctors;
 using DoctorAppointment.Services.Doctors.Contracts;
+using DoctorAppointment.Services.Doctors.Contracts.Dtos;
+using Microsoft.EntityFrameworkCore;
 
 namespace DoctorAppointment.Persistence.EF.Doctors;
 public class EFDoctorRepository : DoctorRepository
@@ -17,5 +19,22 @@ public class EFDoctorRepository : DoctorRepository
     {
         _db.Set<Doctor>().Add(doctor);
 
+    }
+
+    public void Delete(Doctor doctor)
+    {
+        _db.Doctors.Remove(doctor);
+    }
+
+    public async Task<Doctor?> FindById(int id)
+    {
+        return await _db.Doctors.FirstOrDefaultAsync(_ => _.Id == id);
+    }
+
+   
+
+    public async Task<bool> IsExist(string NationalCode)
+    {
+        return await _db.Doctors.AnyAsync(_ => _.NationalCode == NationalCode);
     }
 }
