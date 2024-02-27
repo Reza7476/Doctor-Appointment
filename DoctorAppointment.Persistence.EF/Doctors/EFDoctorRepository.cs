@@ -1,6 +1,5 @@
 ﻿using DoctorAppointment.Entities.Doctors;
 using DoctorAppointment.Services.Doctors.Contracts;
-using DoctorAppointment.Services.Doctors.Contracts.Dtos;
 using Microsoft.EntityFrameworkCore;
 
 namespace DoctorAppointment.Persistence.EF.Doctors;
@@ -17,7 +16,7 @@ public class EFDoctorRepository : DoctorRepository
 
     public void Add(Doctor doctor)
     {
-        _db.Set<Doctor>().Add(doctor);
+        _db.Doctors.Add(doctor);
 
     }
 
