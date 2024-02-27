@@ -6,11 +6,8 @@ using DoctorAppointment.Services.Doctors.Contracts.Dtos;
 using DoctorAppointment.Services.Doctors.Exceptions;
 using DoctorAppointment.Test.Tools.Infrastructure.DatabaseConfig.Unit;
 using FluentAssertions;
-using FluentAssertions.Equivalency;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -132,7 +129,7 @@ public class DoctorServiceTest
 
         await sut.Delete(doctor.Id);
 
-        var actual=readCotext.Doctors.FirstOrDefault(_=>_.Id==doctor.Id);
+        var actual=await readCotext.Doctors.FirstOrDefaultAsync(_=>_.Id==doctor.Id);
         actual.Should().BeNull();
     }
    
@@ -148,7 +145,5 @@ public class DoctorServiceTest
         await actual.Should().ThrowExactlyAsync<DoctorNotFoundException>();
     }
 
- 
-  
 
 }
