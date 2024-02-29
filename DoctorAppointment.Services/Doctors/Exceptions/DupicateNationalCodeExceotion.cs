@@ -1,4 +1,4 @@
 ﻿namespace DoctorAppointment.Services.Doctors.Exceptions;
-public  class DoctorIsExsitException:Exception
+public  class DupicateNationalCodeExceotion:Exception
 {
 }

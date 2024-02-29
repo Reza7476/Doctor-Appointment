@@ -7,11 +7,9 @@ using DoctorAppointment.Services.Patients.Exceptions;
 using DoctorAppointment.Test.Tools.Infrastructure.DatabaseConfig.Unit;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
-using Xunit.Sdk;
 
 namespace DoctorAppointment.Services.Unit.Tests.Patients;
 public class PatientServiceTest

@@ -4,7 +4,7 @@ namespace DoctorAppointment.Services.Doctors.Contracts;
 public interface DoctorService
 {
     Task Add(AddDoctorDto dto);
-    Task Update(int id,UpdateDoctorDto dto);
+    Task Update(int id, UpdateDoctorDto dto);
     Task Delete(int id);
-   
+    Task<List<DoctorDto>?> Get();
 }
