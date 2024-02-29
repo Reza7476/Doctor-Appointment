@@ -24,7 +24,7 @@ public class DoctorAppService : DoctorService
 
         var doctorExist = await _doctorRepository.IsExist(dto.NationalCode);
         if (doctorExist == true)
-            throw new DoctorIsExsitException();
+            throw new DupicateNationalCodeExceotion();
         var doctor = new Doctor
         {
             FirstName = dto.FirstName,
@@ -46,6 +46,10 @@ public class DoctorAppService : DoctorService
         await _unitOfWork.Complete();   
     }
 
+    public Task<List<DoctorDto>?> Get()
+    {
+        return _doctorRepository.Get();
+    }
 
     public async Task Update(int id, UpdateDoctorDto dto)
     {
