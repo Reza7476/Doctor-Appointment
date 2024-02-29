@@ -21,7 +21,7 @@ public class PatientAppService : PatientService
     {
         var patientExist = await _patientRepository.IsExist(dto.NationalCode);
         if (patientExist == true)
-            throw new PatientAlreadyExistedException();
+            throw new DuplicateNationalCodeException();
         var patient = new Patient()
         {
             FirstName = dto.FirstName,
@@ -39,6 +39,11 @@ public class PatientAppService : PatientService
             throw new PatientNotFoundException();
         _patientRepository.Delete(patient);
         await _unitOfWork.Complete();   
+    }
+
+    public async Task<List<PatientDto>?> Get()
+    {
+        return await _patientRepository.Get();
     }
 
     public async Task Update(int id, UpdatePatientDto dto)

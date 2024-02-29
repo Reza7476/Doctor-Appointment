@@ -43,6 +43,7 @@ public class DoctorServiceTest
     {
         var nationalCode = "1234567890";
         var doctor = new DoctorServiceBuilder()
+            .WithNationlCode(nationalCode)
             .Build();
         context.Save(doctor);
         var dto = AddDoctorDtoFactory.Create(nationalCode);

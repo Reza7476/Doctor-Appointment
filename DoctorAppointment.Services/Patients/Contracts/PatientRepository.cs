@@ -1,4 +1,5 @@
 ﻿using DoctorAppointment.Entities.Patients;
+using DoctorAppointment.Services.Patients.Contracts.Dtos;
 
 namespace DoctorAppointment.Services.Patients.Contracts;
 public interface PatientRepository
@@ -10,4 +11,6 @@ public interface PatientRepository
     void Delete(Patient patient);   
     
     Task<Patient?> FindById(int id);
+
+    Task<List<PatientDto>?> Get();
 }
