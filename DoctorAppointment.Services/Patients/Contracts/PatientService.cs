@@ -6,4 +6,5 @@ public interface PatientService
     Task Add(AddPatientDto dto);
     Task Update(int id,UpdatePatientDto dto);
     Task Delete(int id);
+    Task <List<PatientDto>?> Get();   
 }
