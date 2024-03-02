@@ -10,4 +10,6 @@ public interface AppointmentService
 {
     Task Add(AddAppointmentDto dto);
     Task Update(int id, UpdateAppointmentDto dto);
+
+    Task Delete(int id);
 }

@@ -12,7 +12,7 @@ public interface AppointmentRepository
 {
     void Add(Appointment appointment);
     void Update(Appointment appointment);
-
+    void Delete(Appointment appointment);
 
     Task<Appointment?> Find(int id);
     Task<List<AppointmentDto>?> Get();

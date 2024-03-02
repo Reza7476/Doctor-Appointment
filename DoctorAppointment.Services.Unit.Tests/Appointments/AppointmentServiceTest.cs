@@ -8,6 +8,7 @@ using DoctorAppointment.Test.Tools.Entities.Doctors;
 using DoctorAppointment.Test.Tools.Entities.Patients;
 using DoctorAppointment.Test.Tools.Infrastructure.DatabaseConfig.Unit;
 using FluentAssertions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client.Extensions.Msal;
 using System;
 using System.Linq;
@@ -126,7 +127,7 @@ public class AppointmentServiceTest
         context.Save(appointment);
         var dto = AddAppointmentDtoFactory.Create(doctor.Id, patient.Id, startVisit);
 
-        var actual=async()=>await sut.Add(dto);
+        var actual = async () => await sut.Add(dto);
 
         await actual.Should().ThrowExactlyAsync<TurnInterferenceException>();
     }
@@ -135,19 +136,19 @@ public class AppointmentServiceTest
     public async Task Update_updates_appiontment_properly()
     {
         var startVisit = "2024-02-03 09:30:52,555";
-        var doctor=new DoctorServiceBuilder().Build();
+        var doctor = new DoctorServiceBuilder().Build();
         context.Save(doctor);
-        var patient=new PatientServiceBuilder().Build();
+        var patient = new PatientServiceBuilder().Build();
         context.Save(patient);
         var appointment = new AppointmentServiceBuilder().Build();
         context.Save(appointment);
         var updateDto = UpdateAppointmentDtoFActory.Create(doctor.Id, patient.Id, startVisit);
 
-        await sut.Update(appointment.Id,updateDto);
+        await sut.Update(appointment.Id, updateDto);
 
-        var actual=readContext.Appointments.First(_=>_.Id== appointment.Id);
-        actual.DateTime .Should().Be( appointment.DateTime);
-        actual.PatientId.Should().Be( patient.Id);
+        var actual = readContext.Appointments.First(_ => _.Id == appointment.Id);
+        actual.DateTime.Should().Be(appointment.DateTime);
+        actual.PatientId.Should().Be(patient.Id);
         actual.DoctorId.Should().Be(appointment.DoctorId);
         actual.Start.Should().Be(appointment.Start);
         actual.End.Should().Be(appointment.End);
@@ -166,11 +167,32 @@ public class AppointmentServiceTest
         context.Save(appointment);
         var updateDto = UpdateAppointmentDtoFActory.Create(doctor.Id, patient.Id, startVisit);
 
-        var actual=async()=>await sut.Update(appointmentId, updateDto);
+        var actual = async () => await sut.Update(appointmentId, updateDto);
 
         await actual.Should().ThrowExactlyAsync<AppointmentNotFoundException>();
     }
+    [Fact]
 
-    
+    public async Task Delete_deletes_an_appointment_peroperly()
+    {
+        var appointment = new AppointmentServiceBuilder().Build();
+        context.Save(appointment);
+
+        await sut.Delete(appointment.Id);
+
+        var actual = await readContext.Appointments.FirstOrDefaultAsync(x => x.Id == appointment.Id);
+        actual.Should().BeNull();
+
+    }
+    [Fact]
+    public async Task Delete_throws_AppointmentNotFoundException_when_not_found()
+    {
+        var appointmentId = 22222222;
+        var appointment = new AppointmentServiceBuilder().Build();
+
+        var actual = async () => await sut.Delete(appointmentId);
+
+        await actual.Should().ThrowExactlyAsync<AppointmentNotFoundException>();
+    }
 
 }

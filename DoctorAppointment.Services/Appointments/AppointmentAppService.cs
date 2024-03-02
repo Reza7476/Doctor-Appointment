@@ -56,6 +56,15 @@ public class AppointmentAppService : AppointmentService
         await _unitOfWork.Complete();
     }
 
+    public async Task Delete(int id)
+    {
+        var appointment =await  _appointmentRepository.Find(id);
+        if (appointment == null)
+            throw new AppointmentNotFoundException();
+        _appointmentRepository.Delete(appointment);
+        await _unitOfWork.Complete();
+    }
+
     public async Task Update(int id, UpdateAppointmentDto dto)
     {
         var appointment =await  _appointmentRepository.Find(id);

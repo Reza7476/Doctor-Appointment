@@ -24,6 +24,11 @@ public class EFAppointmetRepository : AppointmentRepository
         _db.Appointments.Add(appointment);
     }
 
+    public async void Delete(Appointment appointment)
+    {
+        _db.Appointments.Remove(appointment);
+    }
+
     public async Task<Appointment?> Find(int id)
     {
        return await _db.Appointments.FirstOrDefaultAsync(x=> x.Id == id);
