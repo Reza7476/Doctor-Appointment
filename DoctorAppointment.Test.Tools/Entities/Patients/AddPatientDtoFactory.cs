@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DoctorAppointment.Test.Tools.Patients;
-public  class AddPatientDtoFactory
+namespace DoctorAppointment.Test.Tools.Entities.Patients;
+public class AddPatientDtoFactory
 {
     public static AddPatientDto Create(string? nationalCode = null)
     {

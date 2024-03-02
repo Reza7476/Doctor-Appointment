@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DoctorAppointment.Test.Tools.Patients;
+namespace DoctorAppointment.Test.Tools.Entities.Patients;
 public class UpdatePatientDtoFactory
 {
-   public static UpdatePatientDto  Create(string? nationalCode = null)
+    public static UpdatePatientDto Create(string? nationalCode = null)
     {
         return new UpdatePatientDto
         {

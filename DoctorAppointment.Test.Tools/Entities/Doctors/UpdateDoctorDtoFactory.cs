@@ -1,6 +1,6 @@
 ﻿using DoctorAppointment.Services.Doctors.Contracts.Dtos;
 
-namespace DoctorAppointment.Test.Tools.Doctors;
+namespace DoctorAppointment.Test.Tools.Entities.Doctors;
 public class UpdateDoctorDtoFactory
 {
 

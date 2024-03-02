@@ -8,14 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DoctorAppointment.Test.Tools.Patients;
+namespace DoctorAppointment.Test.Tools.Entities.Patients;
 public class PatientServiceFactory
 {
     public static PatientService Create(EFDataContext context)
     {
-        var patientRepository=new EFPatientRepository  (context);
+        var patientRepository = new EFPatientRepository(context);
         var unitOfWork = new EFUnitOfWork(context);
-        return new PatientAppService(patientRepository, unitOfWork);    
+        return new PatientAppService(patientRepository, unitOfWork);
     }
 
 }
