@@ -3,8 +3,8 @@ using DoctorAppointment.Persistence.EF.Doctors;
 using DoctorAppointment.Services.Doctors;
 using DoctorAppointment.Services.Doctors.Contracts;
 
-namespace DoctorAppointment.Test.Tools.Doctors;
-public  class DoctorServiceFactory
+namespace DoctorAppointment.Test.Tools.Entities.Doctors;
+public class DoctorServiceFactory
 {
     public static DoctorService Create(EFDataContext contex)
     {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DoctorAppointment.Test.Tools.Patients;
+namespace DoctorAppointment.Test.Tools.Entities.Patients;
 public class PatientServiceBuilder
 {
 

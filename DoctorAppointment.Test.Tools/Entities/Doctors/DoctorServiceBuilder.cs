@@ -1,6 +1,6 @@
 ﻿using DoctorAppointment.Entities.Doctors;
 
-namespace DoctorAppointment.Test.Tools.Doctors;
+namespace DoctorAppointment.Test.Tools.Entities.Doctors;
 public class DoctorServiceBuilder
 {
     private readonly Doctor _doctor;

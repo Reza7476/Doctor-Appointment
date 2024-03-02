@@ -1,7 +1,7 @@
 ﻿using DoctorAppointment.Persistence.EF;
 using DoctorAppointment.Services.Doctors.Contracts;
 using DoctorAppointment.Services.Doctors.Exceptions;
-using DoctorAppointment.Test.Tools.Doctors;
+using DoctorAppointment.Test.Tools.Entities.Doctors;
 using DoctorAppointment.Test.Tools.Infrastructure.DatabaseConfig.Unit;
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
